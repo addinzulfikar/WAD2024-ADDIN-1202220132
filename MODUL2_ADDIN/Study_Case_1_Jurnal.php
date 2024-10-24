@@ -52,11 +52,16 @@ $syarat3 = false;
 
   if ($syarat1 == true || $syarat2 == true) {
     $hasil = "dapat mengambil dapat mengambil peminatan Kimia Pangan";
+  }else {
+    $hasil = "gk lulus";
   }
 
   if ($syarat1 == true || $syarat2 == true || $syarat3 == true )  {
     $hasil = "dapat mengambil dapat mengambil peminatan Kimia Pangan dan dapat mengambil peminatan Kimia Umum";
+  }else {
+    $hasil = "dapat mengambil dapat mengambil peminatan Kimia Pangan";
   }
+
 
 // **********************  3  ************************** 
 ?>
@@ -123,15 +128,10 @@ $syarat3 = false;
  
                         <?php
                         if (!empty($hasil)) {
-                            echo "<div class='alert alert-success'>BMI Anda: $hasil</div>";
+                            echo "<div class='alert alert-success'>BMI Anda: $hasil</div>";    
                         }
                         ?>
-                        <!-- Hasil pesan error ditampilkan di sini -->
-                        <?php
-                        if (!empty($error)) {
-                            echo "<div class='alert alert-danger'>$error</div>";
-                        }
-                        ?>
+                    
                 
 
                 </div>
