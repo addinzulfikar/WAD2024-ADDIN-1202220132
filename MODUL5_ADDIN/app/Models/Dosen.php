@@ -13,9 +13,8 @@ class Dosen extends Model
 
    
 
-    // Menambahkan atribut ke dalam fillable
     protected $fillable = [
-        'kode_dosen',  // Contoh kolom yang ingin Anda isi
+        'kode_dosen',  
         'nama_dosen',
         'nip',
         'email',

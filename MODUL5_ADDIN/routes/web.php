@@ -7,9 +7,9 @@ Route::resource('mahasiswas', MahasiswaController::class);
 Route::resource('dosens', DosenController::class);
 
 
-Route::get('/', function () {
-    return view('/main');
-});
+// Route::get('/', function () {
+//     return view('/dosens');
+// });
 
-
+Route::get('/', [DosenController::class, 'index'])->name('dosens.index'); // Menampilkan semua data
 

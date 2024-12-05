@@ -16,7 +16,7 @@ class MahasiswaController extends Controller
 
     public function create()
     {
-        $dosens = Dosen::all(); // Ambil daftar dosen
+        $dosens = Dosen::all();
         return view('mahasiswas.create', compact('dosens'));
     }
 
@@ -30,7 +30,7 @@ class MahasiswaController extends Controller
             'dosen_id' => 'required|exists:dosens,id',
         ]);
     
-        // Menyimpan data mahasiswa ke database
+       
         Mahasiswa::create([
             'nim' => $validated['nim'],
             'nama_mahasiswa' => $validated['nama_mahasiswa'],
@@ -49,22 +49,22 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         $mahasiswa = Mahasiswa::findOrFail($id);
-        $dosens = Dosen::all(); // Ambil daftar dosen
+        $dosens = Dosen::all(); 
         return view('mahasiswas.edit', compact('mahasiswa', 'dosens'));
     }
 
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        // Validasi input dari form
+    
         $validated = $request->validate([
-            'nim' => 'required|unique:mahasiswas,nim,' . $mahasiswa->id,  // Pastikan NIM unik, kecuali untuk mahasiswa yang sedang diperbarui
+            'nim' => 'required|unique:mahasiswas,nim,' . $mahasiswa->id,  
             'nama_mahasiswa' => 'required',
-            'email' => 'required|email|unique:mahasiswas,email,' . $mahasiswa->id,  // Pastikan email unik, kecuali untuk mahasiswa yang sedang diperbarui
+            'email' => 'required|email|unique:mahasiswas,email,' . $mahasiswa->id,  
             'jurusan' => 'required',
-            'dosen_id' => 'required|exists:dosens,id',  // Validasi dosen_id yang valid
+            'dosen_id' => 'required|exists:dosens,id', 
         ]);
     
-        // Update data mahasiswa
+
         $mahasiswa->update([
             'nim' => $validated['nim'],
             'nama_mahasiswa' => $validated['nama_mahasiswa'],
@@ -73,7 +73,7 @@ class MahasiswaController extends Controller
             'dosen_id' => $validated['dosen_id'],
         ]);
     
-        // Redirect ke halaman daftar mahasiswa dengan pesan sukses
+       
         return redirect()->route('mahasiswas.index')->with('success', 'Data mahasiswa berhasil diperbarui!');
     }
 
